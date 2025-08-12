@@ -5,6 +5,8 @@ import os
 
 if not os.path.exists("card_results"):
     os.mkdir("card_results")
+else:
+    os.chdir("card_results")
 
 
 api_uri = "https://api.scryfall.com/"
@@ -47,7 +49,6 @@ def result_to_card_names(result):
 sc = input("Enter set code: ")
 card_list = get_all_cards_by_set(sc, get_card_count_by_set(sc))
 
-os.chdir("card_results")
 f = open(f"{sc}_cards.txt", "w")
 f.write("\n".join(result_to_card_names(card_list)))
 f.close()
