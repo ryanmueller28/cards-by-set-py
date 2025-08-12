@@ -34,10 +34,12 @@ def get_all_cards_by_set(set_code, card_count):
 
     cards = []
 
-    for page_no in range(1, page_count):
+    for page_no in range(1, page_count + 1):
         params["page"] = str(page_no)
         result = requests.get(f'{api_uri}cards/search', params=params, headers=headers)
         jlist = json.loads(result.text)
+        if "data" not in jlist:
+            break
         cards.extend(jlist["data"])
     return cards
 
