@@ -5,8 +5,8 @@ import os
 
 if not os.path.exists("card_results"):
     os.mkdir("card_results")
-else:
-    os.chdir("card_results")
+
+os.chdir("card_results")
 
 
 api_uri = "https://api.scryfall.com/"
